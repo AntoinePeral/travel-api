@@ -115,7 +115,7 @@ public class UserServiceTest {
 
         // Assert
         assertThat(users).hasSize(2);
-        assertThat(users.get(0).getUsername()).isEqualTo("user1");
+        assertThat(users.get(0).getUsername()).isEqualTo("user1243");
         assertThat(users.get(1).getUsername()).isEqualTo("user2");
 
     }
