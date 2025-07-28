@@ -41,7 +41,7 @@ public class UserServiceTest {
     User getUser1(){
         User user1 = new User();
         user1.setId(1L);
-        user1.setUsername("user2");
+        user1.setUsername("user21355");
         user1.setEmail("user1@gmail.com");
         user1.setPassword("user1PasswordWithEnoughLength&Caracters");
         user1.setCreatedAt(null);
