@@ -41,7 +41,7 @@ public class UserServiceTest {
     User getUser1(){
         User user1 = new User();
         user1.setId(1L);
-        user1.setUsername("user21355");
+        user1.setUsername("user1");
         user1.setEmail("user1@gmail.com");
         user1.setPassword("user1PasswordWithEnoughLength&Caracters");
         user1.setCreatedAt(null);
@@ -115,7 +115,7 @@ public class UserServiceTest {
 
         // Assert
         assertThat(users).hasSize(2);
-        assertThat(users.get(0).getUsername()).isEqualTo("user1");
+        assertThat(users.get(0).getUsername()).isEqualTo("user11656");
         assertThat(users.get(1).getUsername()).isEqualTo("user2");
 
     }
