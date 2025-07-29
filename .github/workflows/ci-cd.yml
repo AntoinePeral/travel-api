@@ -57,8 +57,8 @@ jobs:
       - name: Test SSH connection
         run: ssh -i ~/.ssh/id_ed25519_travelblog-back -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo 'SSH connection successful!'"
 
-      - name: 🔍 Print ENV vars (debug only)
-        run: env | grep DATABASE
+      - name: 🔍 Print all ENV (debug only)
+        run: env
 
       - name: Clone or update project on server
         run: |
