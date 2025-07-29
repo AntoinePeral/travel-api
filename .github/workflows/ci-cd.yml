@@ -57,9 +57,6 @@ jobs:
       - name: Test SSH connection
         run: ssh -i ~/.ssh/id_ed25519_travelblog-back -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo 'SSH connection successful!'"
 
-      - name: 🔍 Print all ENV (debug only)
-        run: env
-
       - name: Clone or update project on server
         run: |
           ssh -i ~/.ssh/id_ed25519_travelblog-back -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
@@ -91,6 +88,9 @@ jobs:
           echo 'SPRING_JPA_HIBERNATE_DDL_AUTO=${{ secrets.SPRING_JPA_HIBERNATE_DDL_AUTO }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           chmod 600 /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod
           "
+
+      - name: 🔍 Print all ENV (debug only)
+        run: env
 
       - name: Build Docker image and deploy
         run: |
