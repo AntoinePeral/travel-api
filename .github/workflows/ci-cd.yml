@@ -90,7 +90,7 @@ jobs:
           chmod 600 /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod
           "
 
-      - name: 🔍 Print all ENV (debug only)
+      - name: 🔍s Print all ENV (debug only)
         run: env
 
       - name: Build Docker image and deploy
