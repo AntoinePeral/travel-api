@@ -48,12 +48,22 @@ jobs:
       - name: Generate .env file on server
         run: |
           ssh -i ~/.ssh/id_ed25519_travelblog-back -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
+          DB_VOLUME_PATH=\"/var/lib/docker/volumes/travel-blog-api_db-data/_data\"
+    
+          if [ -z \"\$(ls -A \$DB_VOLUME_PATH 2>/dev/null)\" ]; then
+          echo '🔄 Volume vide : DDL = create'
+          DDL_VALUE=create
+          else
+          echo '📦 Volume déjà initialisé : DDL = update'
+          DDL_VALUE=update
+          fi
+      
           echo 'SPRING_PROFILES_ACTIVE=prod' > /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           echo 'DB_NAME=${{ secrets.DB_NAME }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           echo 'SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           echo 'DATABASE_USER=${{ secrets.DATABASE_USER }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           echo 'DATABASE_USER_PASSWORD=${{ secrets.DATABASE_USER_PASSWORD }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
-          echo 'SPRING_JPA_HIBERNATE_DDL_AUTO=${{ secrets.SPRING_JPA_HIBERNATE_DDL_AUTO }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
+          echo \"SPRING_JPA_HIBERNATE_DDL_AUTO=\$DDL_VALUE\" >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod
           echo 'DATABASE_ROOT_PASSWORD=${{ secrets.DATABASE_ROOT_PASSWORD }}' >> /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod &&
           chmod 600 /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod
           "
