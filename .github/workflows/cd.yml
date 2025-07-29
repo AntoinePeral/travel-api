@@ -2,7 +2,7 @@ name: CD - Deploy Backend
 
 on:
   workflow_run:
-    workflows: ["CI - Build and Test Application"]
+    workflows: ["CI - Build, Format & Lint"]
     types:
       - completed
 
