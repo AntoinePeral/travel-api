@@ -90,9 +90,6 @@ jobs:
           chmod 600 /home/${{ secrets.SERVER_USER }}/${{ secrets.PROJECT_NAME }}/.env.prod
           "
 
-      - name: 🔍s Print all ENV (debug only)
-        run: env
-
       - name: Build Docker image and deploy
         run: |
           ssh -i ~/.ssh/id_ed25519_travelblog-back -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
