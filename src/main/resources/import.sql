@@ -30,7 +30,7 @@ INSERT INTO step (title, description, latitude, longitude, city, country, contin
 
 INSERT INTO step (title, description, latitude, longitude, city, country, continent, start_date, end_date, status, travel_diary_id, created_at, updated_at)VALUES ('Hanoï', 'Marchés et street food', 21.0285, 105.8542, 'Hanoï', 'Vietnam', 'Asia','2020-08-12','2020-08-12','IN_PROGRESS',2,NOW(),NOW());
 
-INSERT INTO step (...) VALUES ('Lisbonne', 'Ville lumineuse', 38.7223, -9.1393, 'Lisbonne', 'Portugal', 'Europe','2020-08-12','2020-08-12','COMPLETED',3,NOW(),NOW());
+INSERT INTO step (title, description, latitude, longitude, city, country, continent, start_date, end_date, status, travel_diary_id, created_at, updated_at) VALUES ('Lisbonne', 'Ville lumineuse', 38.7223, -9.1393, 'Lisbonne', 'Portugal', 'Europe','2020-08-12','2020-08-12','COMPLETED',3,NOW(),NOW());
 
 -- 🎥 Médias
 INSERT INTO media (file_url, media_type, is_visible, step_id, created_at, updated_at, travel_diary_id) VALUES ('https://www.echosciences-grenobler/uploads/article/image/attachment/1005418938/xl_lens-1209823_1920.jpg', 'PHOTO', true, 1, NOW(), NOW(), NULL);
