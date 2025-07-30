@@ -1,5 +1,6 @@
 package com.wcs.travel_blog.travel_diary.mapper;
 
+import com.wcs.travel_blog.step.mapper.StepMapper;
 import com.wcs.travel_blog.step.model.Step;
 import com.wcs.travel_blog.travel_diary.dto.CreateTravelDiaryDTO;
 import com.wcs.travel_blog.travel_diary.dto.TravelDiaryDTO;
@@ -14,6 +15,12 @@ import java.util.stream.Collectors;
 
 @Component
 public class TravelDiaryMapper {
+
+    private final StepMapper stepMapper;
+
+    public TravelDiaryMapper(StepMapper stepMapper) {
+        this.stepMapper = stepMapper;
+    }
 
     public TravelDiaryDTO toDto(TravelDiary travelDiary){
         TravelDiaryDTO dto = new TravelDiaryDTO();
@@ -32,7 +39,7 @@ public class TravelDiaryMapper {
         dto.setMedia(travelDiary.getMedia() != null ? travelDiary.getMedia().getId() : null);
         if (travelDiary.getSteps() != null) {
             dto.setSteps(travelDiary.getSteps().stream()
-                    .map(Step::getId)
+                    .map(stepMapper::toDto)
                     .collect(Collectors.toList()));
         } else {
             dto.setSteps(List.of());
