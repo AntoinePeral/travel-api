@@ -34,6 +34,7 @@ public class TravelDiaryMapper {
         dto.setCanComment(travelDiary.getCanComment());
         dto.setLatitude(travelDiary.getLatitude());
         dto.setLongitude(travelDiary.getLongitude());
+        dto.setId(travelDiary.getId());
 
         dto.setUser(travelDiary.getUser() != null ? travelDiary.getUser().getId() : null);
         dto.setMedia(travelDiary.getMedia() != null ? travelDiary.getMedia().getId() : null);

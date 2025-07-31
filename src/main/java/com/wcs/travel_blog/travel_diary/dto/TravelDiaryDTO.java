@@ -14,6 +14,8 @@ import java.util.List;
 
 @Component
 public class TravelDiaryDTO {
+    private Long id;
+
     private String title;
 
     private String description;
