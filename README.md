@@ -11,3 +11,5 @@ docker compose -f docker-compose.dev.yml logs -f app
 docker compose -f docker-compose.dev.yml down
 # stopper + wipe DB dev
 docker compose -f docker-compose.dev.yml down -v
+
+Should no push on docker image just test 
