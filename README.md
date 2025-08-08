@@ -13,3 +13,4 @@ docker compose -f docker-compose.dev.yml down
 docker compose -f docker-compose.dev.yml down -v
 
 Should no push on docker image just test 
+should no push on test eon fix 
